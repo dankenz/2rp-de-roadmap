@@ -1,6 +1,19 @@
-import pyspark
-from pyspark.sql import SparkSession
+import pyspark.sql.functions as F
+from pyspark.sql.window import Window
+from pyspark.sql import DataFrame
+import datetime
+import pandas as pd
 
-spark = SparkSession.builder.master("yarn").appName("MyApp").getOrCreate()
+gen = spark.read.csv(path="hdfs:/user/2rp-danielk/.scratchdir/generation.csv", inferSchema=True, header=True,sep=',')
+poke = spark.read.csv(path="hdfs:/user/2rp-danielk/.scratchdir/pokemon.csv", inferSchema=True, header=True)
+genf=gen.select(F.col('*')).filter(F.col('date_introduced') < '2002-09-28')
+genf=genf.cache()
+pokemons=poke.join(genf,["generation"],'inner')
+pokemons.write.saveAsTable('work_dataeng.pokemons_oldschool_danielk', format="orc", mode="overwrite")
+
+
+
+
+
 
 
