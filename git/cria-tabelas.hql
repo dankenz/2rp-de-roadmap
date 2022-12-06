@@ -1,17 +1,16 @@
-Table name: generation_<seu_nome>
-col     type
-generation  int
-date_introduced date
+CREATE TABLE IF NOT EXISTS generation_danielk(
+generation INT,
+date_introduced DATE
+)
 
-
-
-Table name: pokemon_<seu_nome>
-idnum   int 
-name    string  
-hp  int 
-speed   int 
-attack  int 
-special_attack  int 
-defense int 
-special_defense int 
-generation  int
+CREATE TABLE IF NOT EXISTS pokemon_danielk(
+idnum INT, 
+name STRING,  
+hp INT, 
+speed INT, 
+attack INT, 
+special_attack INT, 
+defense INT,
+special_defense INT, 
+generation INT
+)
