@@ -1,8 +1,6 @@
 import pyspark.sql.functions as F
-from pyspark.sql.window import Window
 from pyspark.sql import DataFrame
 import datetime
-import pandas as pd
 
 gen = spark.read.csv(path="hdfs:/user/2rp-danielk/.scratchdir/generation.csv", inferSchema=True, header=True,sep=',')
 poke = spark.read.csv(path="hdfs:/user/2rp-danielk/.scratchdir/pokemon.csv", inferSchema=True, header=True)
