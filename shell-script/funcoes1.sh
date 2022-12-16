@@ -1,5 +1,5 @@
 #!/bin/bash
-lista_arquivos() {
+function lista_arquivos() {
     echo "Lista de arquivos desta pasta - "  
 	VETOR= ls -R $*
 }
